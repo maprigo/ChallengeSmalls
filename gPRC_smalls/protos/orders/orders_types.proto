@@ -1,0 +1,25 @@
+syntax = "proto3";
+package orders;
+
+message Order {
+  string name = 1;
+  uint32 quantity = 2;
+}
+
+message CreateOrderRequest {
+  string name = 1;
+  uint32 quantity = 2;
+}
+
+message CreateOrderResult {
+  Order order = 1;
+}
+
+message GetOrdersRequest {
+  repeated Order order = 1;
+}
+
+message GetOrdersResult {
+  Order order = 1;
+}
+

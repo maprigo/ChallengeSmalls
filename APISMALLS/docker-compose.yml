@@ -1,0 +1,7 @@
+version: '3.7'  # optional since v1.27.0
+services:
+  smalls:
+    container_name: apismalls
+    build: .
+    ports:
+      - "5000:5000"

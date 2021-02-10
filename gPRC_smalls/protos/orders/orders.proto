@@ -1,0 +1,7 @@
+syntax = "proto3";
+import "orders_types.proto";
+
+service Orders {
+  rpc CreateOrder (orders.CreateOrderRequest) returns (orders.CreateOrderResult);
+  rpc GetOrders (orders.GetOrdersRequest) returns (stream orders.GetOrdersResult);
+}
