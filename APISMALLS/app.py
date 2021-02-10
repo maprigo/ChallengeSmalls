@@ -1,14 +1,20 @@
 from copy import Error
 import logging, json , requests
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, Response
 from werkzeug.exceptions import HTTPException
 
 #helpers
 from Functions.Checks.ValidateOrder import Validate
 from Functions.Order import Order
 
-# GRPC_SERVICE = "http://localhost:5001/"
+from google.protobuf.json_format import MessageToJson
+from client_wrapper import ServiceClient
+
+import orders_pb2_grpc as orders_service
+import orders_types_pb2 as orders_messages
+
 app = Flask(__name__)
+app.config['orders'] = ServiceClient(orders_service, 'OrdersStub', 'localhost', 50051)
 
 @app.route("/",)
 def Miau():
@@ -48,6 +54,21 @@ def date():
         message= e
         logging.info(message)
         return  jsonify(message=message, status=400)  , 400
+
+
+#this method Test Server
+@app.route('/orderstest',methods=["post"])
+def orders_get():
+    request = orders_messages.GetOrdersRequest(
+        user=[orders_messages.Order(name="alexa", quantity=1),
+              orders_messages.Order(name="christie", quantity=1)]
+    )
+    def get_order():
+        response = app.config['orders'].GetOrders(request)
+        for resp in response:
+            yield MessageToJson(resp)
+    return Response(get_order(), content_type='application/json')
+
 
 #this handle all exception on API  
 @app.errorhandler(HTTPException)
