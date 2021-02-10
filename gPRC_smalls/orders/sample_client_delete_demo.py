@@ -15,8 +15,8 @@ def run():
     else:
         stub = orders_service.OrdersStub(channel)
         metadata = [('ip', '127.0.0.1')]
-        response = stub.CreateOrder(
-            orders_messages.CreateOrderRequest(name='tom', quantity=2),
+        response = stub.DeleteOrder(
+            orders_messages.DeleteOrderRequest(name='tom'),
             metadata=metadata,
         )
         if response:

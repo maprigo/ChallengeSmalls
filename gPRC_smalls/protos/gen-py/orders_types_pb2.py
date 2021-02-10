@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x12orders_types.proto\x12\x06orders\"\'\n\x05Order\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08quantity\x18\x02 \x01(\r\"4\n\x12\x43reateOrderRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08quantity\x18\x02 \x01(\r\"1\n\x11\x43reateOrderResult\x12\x1c\n\x05order\x18\x01 \x01(\x0b\x32\r.orders.Order\"0\n\x10GetOrdersRequest\x12\x1c\n\x05order\x18\x01 \x03(\x0b\x32\r.orders.Order\"/\n\x0fGetOrdersResult\x12\x1c\n\x05order\x18\x01 \x01(\x0b\x32\r.orders.Orderb\x06proto3'
+  serialized_pb=b'\n\x12orders_types.proto\x12\x06orders\"\'\n\x05Order\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08quantity\x18\x02 \x01(\r\"4\n\x12\x43reateOrderRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08quantity\x18\x02 \x01(\r\"1\n\x11\x43reateOrderResult\x12\x1c\n\x05order\x18\x01 \x01(\x0b\x32\r.orders.Order\"0\n\x10GetOrdersRequest\x12\x1c\n\x05order\x18\x01 \x03(\x0b\x32\r.orders.Order\"/\n\x0fGetOrdersResult\x12\x1c\n\x05order\x18\x01 \x01(\x0b\x32\r.orders.Order\"\"\n\x12\x44\x65leteOrderRequest\x12\x0c\n\x04name\x18\x01 \x01(\tb\x06proto3'
 )
 
 
@@ -198,6 +198,38 @@ _GETORDERSRESULT = _descriptor.Descriptor(
   serialized_end=273,
 )
 
+
+_DELETEORDERREQUEST = _descriptor.Descriptor(
+  name='DeleteOrderRequest',
+  full_name='orders.DeleteOrderRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='name', full_name='orders.DeleteOrderRequest.name', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=275,
+  serialized_end=309,
+)
+
 _CREATEORDERRESULT.fields_by_name['order'].message_type = _ORDER
 _GETORDERSREQUEST.fields_by_name['order'].message_type = _ORDER
 _GETORDERSRESULT.fields_by_name['order'].message_type = _ORDER
@@ -206,6 +238,7 @@ DESCRIPTOR.message_types_by_name['CreateOrderRequest'] = _CREATEORDERREQUEST
 DESCRIPTOR.message_types_by_name['CreateOrderResult'] = _CREATEORDERRESULT
 DESCRIPTOR.message_types_by_name['GetOrdersRequest'] = _GETORDERSREQUEST
 DESCRIPTOR.message_types_by_name['GetOrdersResult'] = _GETORDERSRESULT
+DESCRIPTOR.message_types_by_name['DeleteOrderRequest'] = _DELETEORDERREQUEST
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 Order = _reflection.GeneratedProtocolMessageType('Order', (_message.Message,), {
@@ -242,6 +275,13 @@ GetOrdersResult = _reflection.GeneratedProtocolMessageType('GetOrdersResult', (_
   # @@protoc_insertion_point(class_scope:orders.GetOrdersResult)
   })
 _sym_db.RegisterMessage(GetOrdersResult)
+
+DeleteOrderRequest = _reflection.GeneratedProtocolMessageType('DeleteOrderRequest', (_message.Message,), {
+  'DESCRIPTOR' : _DELETEORDERREQUEST,
+  '__module__' : 'orders_types_pb2'
+  # @@protoc_insertion_point(class_scope:orders.DeleteOrderRequest)
+  })
+_sym_db.RegisterMessage(DeleteOrderRequest)
 
 
 # @@protoc_insertion_point(module_scope)

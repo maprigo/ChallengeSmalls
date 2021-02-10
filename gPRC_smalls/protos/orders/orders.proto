@@ -1,7 +1,15 @@
 syntax = "proto3";
 import "orders_types.proto";
 
+import "google/protobuf/empty.proto";
+
 service Orders {
   rpc CreateOrder (orders.CreateOrderRequest) returns (orders.CreateOrderResult);
   rpc GetOrders (orders.GetOrdersRequest) returns (stream orders.GetOrdersResult);
+	rpc DeleteOrder (orders.DeleteOrderRequest) returns (google.protobuf.Empty) {}
 }
+
+// The first step to implementing a gRPC server is to describe the server's interface. 
+// The interface of the service is defined by the functions it exposes and the input and output messages.
+// Our example service is called Users and defines one function to create a user and another to fetch user details.
+// The following defines the service Orders with three functions via protobuf:

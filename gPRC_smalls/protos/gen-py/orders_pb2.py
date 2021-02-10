@@ -12,6 +12,7 @@ _sym_db = _symbol_database.Default()
 
 
 import orders_types_pb2 as orders__types__pb2
+from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
@@ -20,9 +21,9 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x0corders.proto\x1a\x12orders_types.proto2\x90\x01\n\x06Orders\x12\x44\n\x0b\x43reateOrder\x12\x1a.orders.CreateOrderRequest\x1a\x19.orders.CreateOrderResult\x12@\n\tGetOrders\x12\x18.orders.GetOrdersRequest\x1a\x17.orders.GetOrdersResult0\x01\x62\x06proto3'
+  serialized_pb=b'\n\x0corders.proto\x1a\x12orders_types.proto\x1a\x1bgoogle/protobuf/empty.proto2\xd5\x01\n\x06Orders\x12\x44\n\x0b\x43reateOrder\x12\x1a.orders.CreateOrderRequest\x1a\x19.orders.CreateOrderResult\x12@\n\tGetOrders\x12\x18.orders.GetOrdersRequest\x1a\x17.orders.GetOrdersResult0\x01\x12\x43\n\x0b\x44\x65leteOrder\x12\x1a.orders.DeleteOrderRequest\x1a\x16.google.protobuf.Empty\"\x00\x62\x06proto3'
   ,
-  dependencies=[orders__types__pb2.DESCRIPTOR,])
+  dependencies=[orders__types__pb2.DESCRIPTOR,google_dot_protobuf_dot_empty__pb2.DESCRIPTOR,])
 
 
 
@@ -37,8 +38,8 @@ _ORDERS = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=37,
-  serialized_end=181,
+  serialized_start=66,
+  serialized_end=279,
   methods=[
   _descriptor.MethodDescriptor(
     name='CreateOrder',
@@ -57,6 +58,16 @@ _ORDERS = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=orders__types__pb2._GETORDERSREQUEST,
     output_type=orders__types__pb2._GETORDERSRESULT,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='DeleteOrder',
+    full_name='Orders.DeleteOrder',
+    index=2,
+    containing_service=None,
+    input_type=orders__types__pb2._DELETEORDERREQUEST,
+    output_type=google_dot_protobuf_dot_empty__pb2._EMPTY,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),

@@ -1,6 +1,7 @@
 syntax = "proto3";
-package orders;
+package orders; //by defining proto3 syntax as above. However, it also defines a package:
 
+//Next, we define the message Order describing a Order in our service:
 message Order {
   string name = 1;
   uint32 quantity = 2;
@@ -10,16 +11,24 @@ message CreateOrderRequest {
   string name = 1;
   uint32 quantity = 2;
 }
-
+// We then define the message we'll use to return the result of a create-Order operation:
 message CreateOrderResult {
   Order order = 1;
 }
-
+// define the GetUsesRequest message as follows:
 message GetOrdersRequest {
   repeated Order order = 1;
 }
 
 message GetOrdersResult {
+  Order order = 1;
+}
+
+message DeleteOrderRequest {
+  string name = 1;
+}
+
+message DeleteOrderResult {
   Order order = 1;
 }
 

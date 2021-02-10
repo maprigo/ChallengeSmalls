@@ -2,6 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
+from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
 import orders_types_pb2 as orders__types__pb2
 
 
@@ -24,6 +25,11 @@ class OrdersStub(object):
                 request_serializer=orders__types__pb2.GetOrdersRequest.SerializeToString,
                 response_deserializer=orders__types__pb2.GetOrdersResult.FromString,
                 )
+        self.DeleteOrder = channel.unary_unary(
+                '/Orders/DeleteOrder',
+                request_serializer=orders__types__pb2.DeleteOrderRequest.SerializeToString,
+                response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+                )
 
 
 class OrdersServicer(object):
@@ -41,6 +47,12 @@ class OrdersServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def DeleteOrder(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_OrdersServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -53,6 +65,11 @@ def add_OrdersServicer_to_server(servicer, server):
                     servicer.GetOrders,
                     request_deserializer=orders__types__pb2.GetOrdersRequest.FromString,
                     response_serializer=orders__types__pb2.GetOrdersResult.SerializeToString,
+            ),
+            'DeleteOrder': grpc.unary_unary_rpc_method_handler(
+                    servicer.DeleteOrder,
+                    request_deserializer=orders__types__pb2.DeleteOrderRequest.FromString,
+                    response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -95,5 +112,22 @@ class Orders(object):
         return grpc.experimental.unary_stream(request, target, '/Orders/GetOrders',
             orders__types__pb2.GetOrdersRequest.SerializeToString,
             orders__types__pb2.GetOrdersResult.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def DeleteOrder(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/Orders/DeleteOrder',
+            orders__types__pb2.DeleteOrderRequest.SerializeToString,
+            google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
