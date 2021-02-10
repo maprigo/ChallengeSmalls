@@ -14,12 +14,10 @@ _The only thing you should have installed is Docker and Docker-compose_
 ### Install 🔧
 
 
-
 ```
 sudo apt-get -y install apt-transport-https ca-certificates curl software-properties-common
 
 sudo apt-get -y  install docker-ce docker-compose
-
 ```
 
 
@@ -29,7 +27,6 @@ _You only have to download and stop at the root of the project, and execute the 
 
 ```
 docker-compose up -d 
-
 ```
 
 
@@ -37,10 +34,6 @@ docker-compose up -d
 
 
 * **Gonzalo Martinez**  - [maprigo](http://maprigo.com)
-
-También puedes mirar la lista de todos los [contribuyentes](https://github.com/your/project/contributors) quíenes han participado en este proyecto. 
-
-
 
 ---
 ⌨️ con ❤️ por [maprigo](http://maprigo.com)😊
